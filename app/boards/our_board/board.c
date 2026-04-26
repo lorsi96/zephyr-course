@@ -5,7 +5,7 @@
 LOG_MODULE_REGISTER(board, LOG_LEVEL_INF);
 
 static int board_our_board_init(void) {
-    LOG_INF("Actually using board.c");
+    LOG_INF("Board Initialized!");
 	return 0;
 }
 
