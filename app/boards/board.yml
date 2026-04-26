@@ -1,0 +1,6 @@
+board:
+  name: our_board
+  full_name: our_board_esp32_s3 
+  vendor: espressif
+  socs:
+  - name: esp32s3
