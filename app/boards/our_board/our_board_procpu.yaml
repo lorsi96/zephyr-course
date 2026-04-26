@@ -1,5 +1,5 @@
 identifier: our_board/esp32s3/procpu
-name: ESP32-S3 DevKitC PROCPU
+name: Our Board PROCPU
 type: mcu
 arch: xtensa
 toolchain:
@@ -10,15 +10,11 @@ supported:
   - i2c
   - i2s
   - spi
-  - can
   - counter
   - watchdog
   - entropy
   - pwm
   - dma
   - input
-  - video
   - crypto
-  - retained_mem
-  - netif:wifi
 vendor: espressif

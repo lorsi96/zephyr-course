@@ -19,6 +19,8 @@
 };
 
 &spi2 {
+    #address-cells = <1>;
+    #size-cells = <0>;
     line-idle-low;
     status = "okay";
     pinctrl-0 = <&spim2_ws2812>;

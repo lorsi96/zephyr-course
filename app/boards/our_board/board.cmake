@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: Apache-2.0
-
 if(NOT "${OPENOCD}" MATCHES "^${ESPRESSIF_TOOLCHAIN_PATH}/.*")
   set(OPENOCD OPENOCD-NOTFOUND)
 endif()
