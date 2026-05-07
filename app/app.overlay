@@ -1,0 +1,7 @@
+/ {
+    our_driver0: our_driver {
+        compatible = "our,driver";
+        gpios = <&gpio0 15 GPIO_ACTIVE_HIGH>;
+        status = "okay";
+    };
+};
