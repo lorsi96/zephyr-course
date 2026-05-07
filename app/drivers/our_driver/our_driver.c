@@ -5,6 +5,8 @@
 #include <zephyr/device.h>
 #include <zephyr/logging/log.h>
 
+#include "our_driver.h"
+
 LOG_MODULE_REGISTER(our_driver, LOG_LEVEL_INF);
 
 struct our_driver_config {
@@ -12,7 +14,7 @@ struct our_driver_config {
 };
 
 struct our_driver_data {
-	int dummy; /* placeholder for dynamic data */
+	uint32_t blink_interval_ms;
 };
 
 /* sample_fetch: turn the LED on */
@@ -45,6 +47,16 @@ static const DEVICE_API(sensor, our_driver_api) = {
 	.channel_get  = our_driver_channel_get,
 };
 
+/* Extension API: change blink_interval_ms in dynamic data */
+int our_driver_set_blink_interval(const struct device *dev, uint32_t interval_ms)
+{
+	struct our_driver_data *data = dev->data;
+
+	data->blink_interval_ms = interval_ms;
+	LOG_INF("%s: blink_interval set to %u ms", dev->name, interval_ms);
+	return 0;
+}
+
 static int our_driver_init(const struct device *dev)
 {
 	const struct our_driver_config *cfg = dev->config;
@@ -66,7 +78,7 @@ static int our_driver_init(const struct device *dev)
 
 #define OUR_DRIVER_DEFINE(inst)						\
 	static struct our_driver_data our_driver_data_##inst = {	\
-		.dummy = 0,						\
+		.blink_interval_ms = 1000,				\
 	};								\
 									\
 	static const struct our_driver_config our_driver_cfg_##inst = {	\
